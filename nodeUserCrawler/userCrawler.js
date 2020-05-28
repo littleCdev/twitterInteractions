@@ -64,7 +64,6 @@ async function getUserFromDb() {
         console.log(e);
         process.exit(1);
     }
-    console.log(doc);
 
     if (doc === null){
  //       console.log("nothing to do");
@@ -72,6 +71,7 @@ async function getUserFromDb() {
         return;
     }
 
+    console.log(doc);
     console.log("upgrading userstatus");
 
     try{

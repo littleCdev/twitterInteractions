@@ -25,6 +25,11 @@
             </div>
         </div>
     </div>
+    <div class="row hide-on-med-and-down" id="timeline">
+        <div class="col s3 offset-l9">
+            <a class="twitter-timeline" data-width="400" data-height="700" data-dnt="true" data-theme="dark" href="https://twitter.com/InteractionsMap/likes?ref_src=twsrc%5Etfw">Tweets Liked by @InteractionsMap</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+    </div>
 </main>
 
 {include file="footer.tpl"}

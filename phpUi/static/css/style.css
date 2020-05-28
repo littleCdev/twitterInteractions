@@ -69,6 +69,15 @@ footer.page-footer {
     margin-right: auto;
     width: 70%;
 }
+
+#timeline{
+    z-index: 100;
+    position: absolute;
+    top: 120px;
+    float: right;
+    width: 100%;
+}
+
 /** xxx **/
 /** process bar **/
 .progress{

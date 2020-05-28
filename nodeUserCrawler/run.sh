@@ -3,6 +3,7 @@
 notifyurl=""
 servicename="nodeUserCrawler"
 logfile="../${servicename}.log"
+npm install
 
 while :; do
     node userCrawler.js 2>&1 | tee $logfile

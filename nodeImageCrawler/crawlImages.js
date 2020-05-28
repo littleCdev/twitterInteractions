@@ -140,9 +140,11 @@ async function getUserFromDb() {
         }catch (e) {
             if(e.statusCode === 404){
                 await setError(doc.twitterId,'sorry, it seems like you didn\'t interact much :(');
+                working = false;
                 return;
             }else {
                 await setError(doc.twitterId,'something went wrong');
+                working = false;
                 return;
             }
         }
@@ -175,6 +177,7 @@ async function getUserFromDb() {
             usersToDownload = 11;
         }else {
             await setError(doc.twitterId,'sorry, it seems like you didn\'t interact much :(');
+            working = false;
             return;
         }
 
@@ -230,6 +233,7 @@ async function getUserFromDb() {
             'files':users
         }}
     );
+    console.log("done with user "+doc.twitterId);
     working = false;
 }
 

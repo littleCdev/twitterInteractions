@@ -5,7 +5,7 @@ servicename="nodeUserCrawler"
 logfile="../${servicename}.log"
 
 while :; do
-    node userCrawler.js &>> $logfile
+    node userCrawler.js 2>&1 | tee $logfile
 
     # $? = crtl+c in userCrawler.js -> normal exit
     if [ $? -eq 0 ]

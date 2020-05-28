@@ -6,7 +6,7 @@ logfile="../${servicename}.log"
 npm install
 
 while :; do
-    node crawlImages.js &>> $logfile
+    node crawlImages.js 2>&1 | tee $logfile
 
     # $? = crtl+c in crawlImages.js -> normal exit
     if [ $? -eq 0 ]

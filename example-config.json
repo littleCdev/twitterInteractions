@@ -1,0 +1,11 @@
+{
+  "ApiKey": "",
+  "ApiSecret" : "",
+  "MongoHost": "mongodb://localhost:27017",
+  "MongoDb": "twitterUserMap",
+  "TweetChunk": 200,
+  "TweetsLimit": 3200,
+  "DownloadPath": "absolute/path/to/images/",
+  "OutputPath": "absolute/path/to/images/output/",
+  "fileUser": ""
+}

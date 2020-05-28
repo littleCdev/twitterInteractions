@@ -1,0 +1,23 @@
+# protect the .tpl files
+<FilesMatch "\.tpl|sql|inc$">
+    Order Allow,Deny
+    deny from all
+</FilesMatch>
+
+# deny .git
+RedirectMatch 404 /\.git
+RedirectMatch 404 /core/
+
+# no directory browsing
+Options All -Indexes
+
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/static/$
+RewriteCond %{REQUEST_URI} !/.html/$
+RewriteCond %{REQUEST_URI} !\.well-known/acme-challenge
+#exception for icon
+RewriteCond %{REQUEST_URI} !/.html/$
+RewriteRule ^(.*)$ ./index.php [NC,L,QSA]

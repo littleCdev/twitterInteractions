@@ -1,0 +1,191 @@
+nav ul a,
+nav .brand-logo {
+    color: #444;
+}
+
+p {
+    line-height: 2rem;
+}
+
+.sidenav-trigger {
+    color: #26a69a;
+}
+
+.parallax-container {
+    min-height: 380px;
+    line-height: 0;
+    height: auto;
+    color: rgba(255, 255, 255, .9);
+}
+
+.follower-container-top {
+    line-height: 2rem;
+    height: auto;
+    color: rgba(255, 255, 255, .9);
+}
+.follower-container-top > .row{
+    margin-bottom: 0;
+}
+
+.parallax-container .section {
+    width: 100%;
+}
+
+@media only screen and (max-width: 992px) {
+    .parallax-container .section {
+        position: absolute;
+    }
+
+    #index-banner .section {
+        top: 10%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #index-banner .section {
+        top: 0;
+    }
+}
+
+.icon-block {
+    padding: 0 15px;
+}
+
+.icon-block .material-icons {
+    font-size: inherit;
+}
+
+footer.page-footer {
+    margin: 0;
+}
+
+.p100{
+    width: 100%;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+/** xxx **/
+/** process bar **/
+.progress{
+    height: 10px;
+    background-color: black!important;
+}
+.progress .determinate{
+    background-color: #2196f3 !important;
+}
+/** end process bar **/
+
+
+/** image card **/
+.card-title{
+    background-color: rgba(127, 127, 127,0.6)!important;
+}
+
+img.twittershare{
+    height: 1.5rem;
+    float: left!important;
+    margin: 5px;
+    filter: brightness(0) invert(1);
+}
+.card{
+    background-color: transparent!important;
+}
+.card-action{
+    padding: 0!important;
+}
+/** end image card **/
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+@media only screen and (min-width: 600px) {
+    main.diff::before {
+        content: " ";
+        width: 2px;
+        height: 93vh;
+        right: 50%;
+        position: absolute;
+        background-color: white;
+        display: block;
+        z-index: 100;
+    }
+}
+
+.inline{
+    display: inline-block!important;
+}
+
+.brand-logo{
+    height: 64px;
+}
+.brand-logo > img{
+    margin-top: 5%;
+    max-height: 80%;
+}
+
+.brand-logo > span{
+    position: absolute;
+}
+
+.notify{
+    padding: 16px!important;
+}
+
+
+.entertext {
+    height: 60vh;
+}
+
+a.twitter {
+    padding: 64px;
+}
+
+img.twitter {
+    height: 64px;
+}
+
+.bg {
+    background-color: #242424;
+}
+
+@media only screen and (min-width: 600px) {
+    .parallax-container::after {
+        content: " ";
+        width: 2px;
+        height: 100%;
+        right: 50%;
+        position: absolute;
+        background-color: white;
+        display: block;
+        z-index: 100;
+    }
+}
+
+a.icon > img {
+    margin: 8px;
+}
+
+.top {
+    top: 0 !important;
+}
+
+
+/** footer **/
+.page-footer{
+    padding-top: 0!important;
+}
+.footer-copyright a{
+    padding-left: 16px;
+}

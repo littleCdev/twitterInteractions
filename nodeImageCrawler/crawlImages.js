@@ -69,6 +69,7 @@ async function getUserFromDb() {
         return;
     }
 
+    console.log(doc);
 
     Twitter = new Twit({
         consumer_key: Config.ApiKey,

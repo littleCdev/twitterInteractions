@@ -19,3 +19,4 @@ echo "server online, staring scripts";
 tmux new-session -d -s "nodeImageCrawler" "cd nodeImageCrawler;bash run.sh";
 tmux new-session -d -s "nodeUserCrawler" "cd nodeUserCrawler;bash run.sh";
 tmux new-session -d -s "phpCreateImage" "cd phpCreateImage;bash run.sh";
+tmux new-session -d -s "nodeLikeBot" "cd nodeLikeBot;bash run.sh";

@@ -122,7 +122,7 @@ async function getUserFromDb() {
                 singleTweetResponse = 0;
 
             if(currentTweetCount > 0){
-                lastTweet = res.data[currentTweetCount-1].id;
+                lastTweet = res.data[currentTweetCount-1].id_str;
 
                 await addUsersToDb(doc.twitterId, res.data);
                 tweetCount += currentTweetCount;
@@ -165,15 +165,15 @@ async function addUsersToDb(currentUser, tweets) {
         let tweet = tweets[i];
 
         // if no reply ignore
-        if (tweet.in_reply_to_user_id === null)
+        if (tweet.in_reply_to_user_id_str === null)
             continue;
 
         // ignore answers to own
-        if(tweet.in_reply_to_user_id === currentUser)
+        if(tweet.in_reply_to_user_id_str === currentUser)
             continue;
 
         let propertyName = {};
-        propertyName['interactions.' + tweet.in_reply_to_user_id] = 1;
+        propertyName['interactions.' + tweet.in_reply_to_user_id_str] = 1;
 
         await Collection.update(
             {twitterId: currentUser},

@@ -169,7 +169,7 @@ async function addUsersToDb(currentUser, tweets) {
             continue;
 
         // ignore answers to own
-        if(tweet.in_reply_to_user_id_str === currentUser)
+        if(tweet.in_reply_to_user_id_str === currentUser+"")
             continue;
 
         let propertyName = {};

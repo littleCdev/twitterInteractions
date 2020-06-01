@@ -12,6 +12,7 @@ class lcTwitterLogin
     public $status = 0;
     public $tweetCount = 0;
     public $tweetsCrawled = 0;
+    public $outputs = [];
 
     /**
      * @var self
@@ -52,6 +53,62 @@ class lcTwitterLogin
     {
     }
 
+    public function canStartOver(){
+        // users with error always can try again
+        if($this->status == 99)
+            return true;
+
+        // users that are still in working queue are not allowed to create another one
+        if($this->status != 7)
+            return false;
+
+
+        $youngestImage = time();
+        foreach ($this->outputs as $image) {
+            if($image["date"] < $youngestImage)
+                $youngestImage = $image["date"];
+        }
+
+        // 60seconds*60minutes*24hours*31days
+        $oneMonthSeconds = 60*60*24*31;
+        if((time()-$youngestImage) < $oneMonthSeconds)
+            return false;
+
+        return true;
+    }
+
+    public function startOver(){
+        if(!$this->canStartOver())
+            return false;
+
+        $currentTweetCount = 0;
+        // get current tweet count
+        lcTwitterApi::initUser($this->oauth_token, $this->oauth_token_secret);
+        $user = lcTwitterApi::get("users/show",["user_id"=>$this->twitter_id]);
+
+        $currentTweetCount = $user->statuses_count ?? 0;
+
+        $tweets = new stdClass();
+        $tweets->total = $currentTweetCount;
+        $tweets->current = 0;
+
+        $collection = lcMongo::collection("users");
+        $collection->updateOne(
+            ["twitterId"=>$this->twitter_id],
+            ['$set' => [
+                'status'=>0,
+                'tweets'=>$tweets
+            ],
+                '$unset'=>[
+                    'interactions'=>"",
+                    'download'=>'',
+                    'files'=>"",
+                    'collage'=>""
+                ]]
+        );
+
+        return true;
+    }
 
     private static function createCookie()
     {
@@ -107,6 +164,7 @@ class lcTwitterLogin
         $this->status = $doc["status"];
         $this->tweetCount = $doc["tweets"]->total;
         $this->tweetsCrawled = $doc["tweets"]->current;
+        $this->outputs = $doc["outputs"]??[];
 
     }
 
@@ -163,6 +221,7 @@ class lcTwitterLogin
         $this->status = $doc["status"];
         $this->tweetCount = $doc["tweets"]->total;
         $this->tweetsCrawled = $doc["tweets"]->current;
+        $this->outputs = $doc["outputs"]??[];
 
         // 1 month
         setcookie("rm", $this->cookie, time() + 3600 * 24 * 30, "/");

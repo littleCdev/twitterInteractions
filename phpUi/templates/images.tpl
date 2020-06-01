@@ -1,3 +1,20 @@
+<div class="row">
+    <div class="col offset-l2 s8 center-align">
+            <div class="card horizontal " id="warning">
+                <div class="card-image">
+                    <img src="{Cfg::sMainDomain()}static/img/alert.png" alt="alert">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content white-text">
+                        <p>Your last map is older than two month old, do you want to create a new one?</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="{Cfg::sMainDomain()}index/startOver">Create a new one</a>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
 {foreach from=$images item=$image}
     <div class="row">
         <div class="col s12">

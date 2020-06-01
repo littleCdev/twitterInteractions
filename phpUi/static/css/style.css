@@ -89,7 +89,10 @@ footer.page-footer {
 }
 /** end process bar **/
 
-
+/** warning cart **/
+#warning img{
+    filter: brightness(0) invert(1);
+}
 /** image card **/
 .card-title{
     background-color: rgba(127, 127, 127,0.6)!important;

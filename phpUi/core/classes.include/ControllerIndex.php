@@ -17,8 +17,6 @@ class ControllerIndex
             print_r($exception);
         }
 
-
-
         $Smarty = lcSmarty::getInstance();
 
         if($oTLogin->twitter_id>0){
@@ -32,5 +30,30 @@ class ControllerIndex
         }
 
         return false;
+    }
+
+    public static function get_startOver(){
+        header('Content-Type: text/html;charset=utf-8');
+
+        $oTLogin = lcTwitterLogin::getInstance();
+        try {
+            $oTLogin->login();
+        } catch (Exception $exception) {
+            header("location: " . Cfg::sMainDomain() . "");
+            return;
+        }
+
+        if ($oTLogin->twitter_id == 0) {
+            header("location: " . Cfg::sMainDomain() . "");
+            return;
+        }
+
+        if(!$oTLogin->canStartOver()){
+            header("location: " . Cfg::sMainDomain() . "");
+            return;
+        }
+        $oTLogin->startOver();
+        header("location: " . Cfg::sMainDomain() . "");
+
     }
 }

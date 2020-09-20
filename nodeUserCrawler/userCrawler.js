@@ -45,7 +45,14 @@ async function main() {
 
     setInterval(getUserFromDb, 500);
 }
-
+async function setError(twitterId,message){
+    await Collection.updateOne(
+        {'twitterId':twitterId},
+        {'$set':{
+                'status':99,
+                'message':message}}
+    );
+}
 async function getUserFromDb() {
     if(Stop){
         console.log("exit 0");
@@ -154,6 +161,8 @@ async function getUserFromDb() {
         Working = false;
 
     } catch (e) {
+        await setError(doc.twitterId,"servererror :<")
+
         console.log(e);
         process.exit(1);
     }

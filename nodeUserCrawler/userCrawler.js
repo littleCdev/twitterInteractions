@@ -140,7 +140,7 @@ async function getUserFromDb() {
                 {'$set':{'tweets.current': tweetCount}}
             );
 
-            if(singleTweetResponse >= 50)
+            if(singleTweetResponse >= 5)
                 break;
 
         } while (tweetCount < Config.TweetsLimit && currentTweetCount > 0);

@@ -28,6 +28,10 @@ class lcStatus
 
                 if($doc["tweets"]->current > 0)
                     $this->stageTweets = round(100*($doc["tweets"]->current/$doc["tweets"]->total));
+
+                if($this->stageTweets > 100)
+                    $this->stageTweets = 100;
+
                 // crawling users
                 break;
             case 3:

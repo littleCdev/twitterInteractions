@@ -131,8 +131,9 @@ async function getUserFromDb() {
             if(currentTweetCount > 0){
                 lastTweet = res.data[currentTweetCount-1].id_str;
 
-                await addUsersToDb(doc.twitterId, res.data);
-                tweetCount += currentTweetCount;
+                let addedTweets = await addUsersToDb(doc.twitterId, res.data);
+                console.log(`added tweets after filtering: ${addedTweets} of ${currentTweetCount} tweets`);
+                tweetCount += addedTweets;
             }
 
             await Collection.updateOne(
@@ -170,6 +171,7 @@ async function getUserFromDb() {
 
 
 async function addUsersToDb(currentUser, tweets) {
+    let actualAddedTweets = 0;
     for (let i = 0; i < tweets.length; i++) {
         let tweet = tweets[i];
 
@@ -190,10 +192,10 @@ async function addUsersToDb(currentUser, tweets) {
                 '$inc': propertyName
             }
         );
-
+        actualAddedTweets++;
         console.log("addded tweet: " + tweet.id);
     }
-
+    return actualAddedTweets;
 }
 
 main();

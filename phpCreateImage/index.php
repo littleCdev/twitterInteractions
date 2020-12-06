@@ -245,7 +245,8 @@ $collection->updateOne(
         '$unset' => [
             'interactions'=>"",
             'files'=>"",
-            'collage'=>""
+            'collage'=>"",
+            'download'=>''
             ],
         '$set'=>[
             'tweets.total'=>0,

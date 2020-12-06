@@ -53,7 +53,13 @@ class lcTwitterLogin
     {
     }
 
-    public function canStartOver(){
+    public function isError(){
+        if($this->status == 99)
+            return true;
+        return false;
+    }
+
+    public function canStartOver():bool{
         // users with error always can try again
         if($this->status == 99)
             return true;
@@ -63,16 +69,14 @@ class lcTwitterLogin
             return false;
 
 
-        $youngestImage = time();
-        foreach ($this->outputs as $image) {
-            if($image["date"] < $youngestImage)
-                $youngestImage = $image["date"];
-        }
 
-        // 60seconds*60minutes*24hours*31days
-        $oneMonthSeconds = 60*60*24*31;
-        if((time()-$youngestImage) < $oneMonthSeconds)
-            return false;
+        $maxImageAge = time()-(60*60*24*31); // 1 month
+
+
+        foreach ($this->outputs as $image) {
+            if($image->date > $maxImageAge)
+                return false;
+        }
 
         return true;
     }

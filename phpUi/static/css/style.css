@@ -194,6 +194,12 @@ a.icon > img {
 }
 
 
+#twitter-widget-0{
+    position: fixed!important;
+    left: 75%;
+    top: 10%;
+}
+
 /** footer **/
 .page-footer{
     padding-top: 0!important;

@@ -43,7 +43,11 @@ class ControllerT
         setcookie( session_name(), "", time()-3600, "/" );
         session_destroy();
 
-        header("location: ".Cfg::sMainDomain()."");
+        if(lcTwitterLogin::getInstance()->canStartOver()){
+            header("location: ".Cfg::sMainDomain()."index/startOver");
+        }else{
+            header("location: ".Cfg::sMainDomain()."");
+        }
     }
 
 

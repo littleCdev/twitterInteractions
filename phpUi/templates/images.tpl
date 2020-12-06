@@ -1,4 +1,6 @@
+{if $cancreatenew}
 <div class="row">
+    <!--
     <div class="col offset-l2 s8 center-align">
             <div class="card horizontal " id="warning">
                 <div class="card-image">
@@ -13,7 +15,22 @@
                     </div>
                 </div>
             </div>
+            -->
+
+    <div class="col offset-l2 s8 center-align">
+
+        <h5>
+            <a class="white-text" href="{Cfg::sMainDomain()}index/startOver">
+                <i class="material-icons">notification_important</i>
+                You last interactionsmap is old, click here to create a new map!
+            </a>
+        </h5>
+
     </div>
+
+</div>
+{/if}
+
 </div>
 {foreach from=$images item=$image}
     <div class="row">

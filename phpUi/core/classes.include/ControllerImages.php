@@ -100,7 +100,16 @@ class ControllerImages
         }
 
 
+        $aImages = [];
+        foreach ($doc["outputs"] as $image){
+            $aImages[] = $image;
+        }
+
+        $doc["outputs"] = $aImages;
+        usort($doc["outputs"],function ($a,$b){return $a->date<$b->date;});
+
         $smarty = lcSmarty::getInstance();
+        $smarty->assign("cancreatenew",$oTLogin->canStartOver());
         $smarty->assign("images",$doc["outputs"]);
         $smarty->display("images.tpl");
 

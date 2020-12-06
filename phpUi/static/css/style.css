@@ -200,6 +200,12 @@ a.icon > img {
     top: 10%;
 }
 
+@media only screen and (max-width: 992px) {
+    #twitter-widget-0{
+        display: none!important;
+    }
+}
+
 /** footer **/
 .page-footer{
     padding-top: 0!important;

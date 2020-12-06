@@ -193,7 +193,7 @@ async function addUsersToDb(currentUser, tweets) {
             }
         );
         actualAddedTweets++;
-        console.log("addded tweet: " + tweet.id);
+        console.log("addded tweet: " + tweet.id_str);
     }
     return actualAddedTweets;
 }
